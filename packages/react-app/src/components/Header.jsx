@@ -5,7 +5,7 @@ import React from "react";
 
 export default function Header() {
   return (
-    <a href="https://github.com/austintgriffith/scaffold-eth" target="_blank" rel="noopener noreferrer">
+    <a href="https://boatcoin.eth" target="_blank" rel="noopener noreferrer">
       <PageHeader
         title="🚢 Boatcoin"
         subTitle="Don't Miss the Boat"
