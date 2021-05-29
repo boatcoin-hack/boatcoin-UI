@@ -12,7 +12,7 @@ const delayMS = 1000 //sometimes xDAI needs a 6000ms break lol 😅
 const main = async () => {
 
   // ADDRESS TO MINT TO:
-  const toAddress = "0xE41Bd2bb1EA7E75205fc87fe37A9374277918111"
+  const toAddress = "0xe9F2657B6AD0462d49cDc3a29f55A6d07c371790"
 
   console.log("\n\n 🎫 Minting to "+toAddress+"...\n");
 
@@ -42,7 +42,7 @@ const main = async () => {
   console.log("Uploading Jet Ski...")
   const uploaded = await ipfs.add(JSON.stringify(jetSki))
 
-  console.log("Minting buffalo with IPFS hash ("+uploaded.path+")")
+  console.log("Minting JET SKI with IPFS hash ("+uploaded.path+")")
   await yourCollectible.mintItem(toAddress,uploaded.path,{gasLimit:400000})
 
 
@@ -53,11 +53,11 @@ const main = async () => {
     "description": "Custom built by the Ishikawajima-Harima shipyard in Japan",
     "external_url": "https://austingriffith.com/portfolio/paintings/",// <-- this can link to a page for the specific file too
     "image": "https://ipfs.io/ipfs/bafybeidqt7fhotp2choawb6hfrgjw77uiozj7hgq6jrtmwensz2xm2prke/yacht1.mp4",
-    "name": "Yatch Ishikawajima-Harima",
+    "name": "Yacht Ishikawajima-Harima",
     "attributes": [
        {
          "trait_type": "Type",
-         "value": "Yatch"
+         "value": "Yacht"
        },
        {
          "trait_type": "Brand",
@@ -69,10 +69,10 @@ const main = async () => {
        }
     ]
   }
-  console.log("Uploading Ishikawajima-Harima...")
+  console.log("Uploading Yacht 1...")
   const uploadedzebra = await ipfs.add(JSON.stringify(harima))
 
-  console.log("Minting zebra with IPFS hash ("+uploadedzebra.path+")")
+  console.log("Minting Yacht 1 with IPFS hash ("+uploadedzebra.path+")")
   await yourCollectible.mintItem(toAddress,uploadedzebra.path,{gasLimit:400000})
 
 
@@ -88,11 +88,11 @@ const main = async () => {
     "attributes": [
        {
          "trait_type": "Type",
-         "value": "Yatch"
+         "value": "Yacht"
        },
        {
          "trait_type": "Brand",
-         "value": "Goofy"
+         "value": "Trojan"
        },
        {
          "trait_type": "Capacity(Person)",
@@ -100,10 +100,10 @@ const main = async () => {
        }
     ]
   }
-  console.log("Uploading rhino...")
+  console.log("Uploading Yacht 2...")
   const uploadedrhino = await ipfs.add(JSON.stringify(rhino))
 
-  console.log("Minting rhino with IPFS hash ("+uploadedrhino.path+")")
+  console.log("Minting Yacht 2 with IPFS hash ("+uploadedrhino.path+")")
   await yourCollectible.mintItem(toAddress,uploadedrhino.path,{gasLimit:400000})
 
 /*
