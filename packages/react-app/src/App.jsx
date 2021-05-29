@@ -373,6 +373,9 @@ function App(props) {
 
   const [transferToAddresses, setTransferToAddresses] = useState({});
 
+  const [showReview, setShowReview] = useState(false);
+  const onClick = () => setShowReview(true)
+
   return (
     <div className="App">
       {/* ✏️ Edit the header and change the title to your project name */}
@@ -483,13 +486,11 @@ function App(props) {
                           </Button>
 
                           <Button
-                            onClick={() => {
-                              console.log("writeContracts", writeContracts);
-                              tx(writeContracts.YourCollectible.transferFrom(address, transferToAddresses[id], id));
-                            }}
+                            onClick={onClick}
                           >
                             Add review
                           </Button>
+                          { showReview ? <Review /> : null }
                         </div>
                       </div>
                     </List.Item>
@@ -663,6 +664,31 @@ function App(props) {
     </div>
   );
 }
+
+const Review = () => (
+  <div id="results"  style={{ width: 500}}>
+  <br />
+  <br />
+    <form>
+      <label>
+        Title:
+          <input type="text" name="name" />
+        </label>
+        <br />
+        <label>
+        Photo:
+          <input type="file" name="name" />
+        </label>
+        <br />
+        <label>
+        Review:
+        <textarea type="textarea" name="name" />
+      </label>
+      <br />
+      <input type="submit" value="Submit" />
+    </form>
+  </div>
+)
 
 /* eslint-disable */
 window.ethereum &&
