@@ -461,7 +461,7 @@ function App(props) {
                               Sorry, your browser doesn't support embedded videos.
                           </video>
 
-                        <div>{item.description}</div>
+                        <div style={{ width: '300px', 'word-break': 'break-all' }}>{item.description}</div>
                       </Card>
 
                       <div>
@@ -472,24 +472,25 @@ function App(props) {
                           blockExplorer={blockExplorer}
                           fontSize={16}
                         />
-                        <AddressInput
-                          ensProvider={mainnetProvider}
-                          placeholder="transfer to address"
-                          value={transferToAddresses[id]}
-                          onChange={newValue => {
-                            const update = {};
-                            update[id] = newValue;
-                            setTransferToAddresses({ ...transferToAddresses, ...update });
-                          }}
-                        />
-                        <Button
-                          onClick={() => {
-                            console.log("writeContracts", writeContracts);
-                            tx(writeContracts.YourCollectible.transferFrom(address, transferToAddresses[id], id));
-                          }}
-                        >
-                          Transfer
-                        </Button>
+                        <div>
+                          <Button
+                            onClick={() => {
+                              console.log("writeContracts", writeContracts);
+                              tx(writeContracts.YourCollectible.transferFrom(address, transferToAddresses[id], id));
+                            }}
+                          >
+                            Book
+                          </Button>
+
+                          <Button
+                            onClick={() => {
+                              console.log("writeContracts", writeContracts);
+                              tx(writeContracts.YourCollectible.transferFrom(address, transferToAddresses[id], id));
+                            }}
+                          >
+                            Add review
+                          </Button>
+                        </div>
                       </div>
                     </List.Item>
                   );
