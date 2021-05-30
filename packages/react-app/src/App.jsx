@@ -9,7 +9,7 @@ import ReactJson from "react-json-view";
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import Web3Modal from "web3modal";
 import "./App.css";
-import { Account, Address, AddressInput, Contract, Faucet, GasGauge, Header, Ramp, ThemeSwitch, Review } from "./components";
+import { Account, Address, Contract, Faucet, GasGauge, Header, Ramp, ThemeSwitch, Review, Book } from "./components";
 import { DAI_ABI, DAI_ADDRESS, INFURA_ID, NETWORK, NETWORKS } from "./constants";
 import { Transactor } from "./helpers";
 import {
@@ -476,14 +476,7 @@ function App(props) {
                           fontSize={16}
                         />
                         <div>
-                          <Button
-                            onClick={() => {
-                              console.log("writeContracts", writeContracts);
-                              tx(writeContracts.YourCollectible.transferFrom(address, transferToAddresses[id], id));
-                            }}
-                          >
-                            Book
-                          </Button>
+                          <Book />
                           <Review />
                           {/* { showReview ? <Review /> : null } */}
                         </div>
