@@ -1,7 +1,7 @@
 import { StaticJsonRpcProvider, Web3Provider } from "@ethersproject/providers";
 import { formatEther, parseEther } from "@ethersproject/units";
 import WalletConnectProvider from "@walletconnect/web3-provider";
-import { Alert, Button, Card, Col, Input, List, Menu, Row } from "antd";
+import { Alert, Button, Card, Col, Input, List, Menu, Row, Space } from "antd";
 import "antd/dist/antd.css";
 import { useUserAddress } from "eth-hooks";
 import React, { useCallback, useEffect, useState } from "react";
@@ -9,7 +9,7 @@ import ReactJson from "react-json-view";
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import Web3Modal from "web3modal";
 import "./App.css";
-import { Account, Address, Contract, Faucet, GasGauge, Header, Ramp, ThemeSwitch, Review, Book } from "./components";
+import { Account, Address, Contract, Faucet, GasGauge, Header, Ramp, ThemeSwitch, Review, Book, ClaimPoap } from "./components";
 import { DAI_ABI, DAI_ADDRESS, INFURA_ID, NETWORK, NETWORKS } from "./constants";
 import { Transactor } from "./helpers";
 import {
@@ -504,11 +504,18 @@ function App(props) {
                           blockExplorer={blockExplorer}
                           fontSize={16}
                         />
+                        <Space direction="vertical">
                         <div>
                           <Book />
+                        </div>
+                        <div>
                           <Review />
                           {/* { showReview ? <Review /> : null } */}
                         </div>
+                        <div>
+                          <ClaimPoap />
+                        </div>
+                        </Space>
                       </div>
                     </List.Item>
                   );
