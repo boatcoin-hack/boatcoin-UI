@@ -197,6 +197,8 @@ function App(props) {
   const yourBalance = balance && balance.toNumber && balance.toNumber();
   const [yourCollectibles, setYourCollectibles] = useState();
 
+
+
   useEffect(() => {
     const updateYourCollectibles = async () => {
       const collectibleUpdate = [];
@@ -376,6 +378,9 @@ function App(props) {
   const [showReview, setShowReview] = useState(false);
   const onClick = () => setShowReview(true)
 
+  const [ key, setKey] = useState('tab1');
+
+
   return (
     <div className="App">
       {/* ✏️ Edit the header and change the title to your project name */}
@@ -448,23 +453,47 @@ function App(props) {
                 bordered
                 dataSource={yourCollectibles}
                 renderItem={item => {
+                  const tabList = [
+                    {
+                      key: 'tab1',
+                      tab: 'NFT',
+                    },
+                    {
+                      key: 'tab2',
+                      tab: 'Experience',
+                    },
+                  ];
+                  
+                  const contentList = {
+                    tab1: <video controls width="300">
+                            <source src={item.image}
+                              type="video/mp4" />
+                              Sorry, your browser doesn't support embedded videos.
+                          </video>,
+                    tab2: <p>content2</p>,
+                  };
+                  const onTabChange = (key, type) => {
+                    console.log(key, type);
+                    this.setState({ [type]: key });
+                  }; 
                   const id = item.id.toNumber();
                   return (
                     <List.Item key={id + "_" + item.uri + "_" + item.owner}>
                       <Card
+                        hoverable
                         title={
                           <div>
                             <span style={{ fontSize: 16, marginRight: 8 }}>#{id}</span> {item.name}
                           </div>
                         }
+                        tabList={tabList}
+                        activeTabKey={key}
+                        onTabChange={key => {
+                          this.onTabTabChange(key, 'key');
+                        }}
                       >
-                          <video controls width="300">
-                              <source src={item.image}
-                                      type="video/mp4" />
-                              Sorry, your browser doesn't support embedded videos.
-                          </video>
-
-                        <div style={{ width: '300px', 'word-break': 'break-all' }}>{item.description}</div>
+                        {contentList[key]}
+                        <div style={{ width: '300px', 'wordBreak': 'normal' }}>{item.description}</div>
                       </Card>
 
                       <div>
